@@ -1,0 +1,213 @@
+:root {
+      --albastru-inchis: #1a3a5c;
+      --albastru-mediu: #2563eb;
+      --albastru-deschis: #dbeafe;
+      --alb: #ffffff;
+      --gri-text: #374151;
+      --gri-fundal: #f8fafc;
+      --gri-border: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background-color: var(--gri-fundal);
+      color: var(--gri-text);
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: var(--albastru-inchis);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .nav-logo {
+      color: var(--alb);
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding: 1rem 0;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--alb);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.activa {
+      background-color: var(--albastru-mediu);
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, var(--albastru-inchis), #1e5799);
+      color: var(--alb);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .page-header .icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      opacity: 0.85;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    h2 {
+      color: var(--albastru-inchis);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--albastru-deschis);
+    }
+
+    .sectiune {
+      background: var(--alb);
+      border: 1px solid var(--gri-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .sali-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .sala-card {
+      border: 1px solid var(--gri-border);
+      border-left: 4px solid var(--albastru-mediu);
+      border-radius: 6px;
+      padding: 1.2rem;
+    }
+
+    .sala-card h3 {
+      color: var(--albastru-inchis);
+      margin-bottom: 0.4rem;
+    }
+
+    .sala-card p {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 0.3rem;
+    }
+
+    .disponibil {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+    }
+
+    .ocupat {
+      display: inline-block;
+      background: #fee2e2;
+      color: #991b1b;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      background: var(--albastru-inchis);
+      color: var(--alb);
+      padding: 0.7rem;
+      text-align: left;
+    }
+
+    td {
+      padding: 0.7rem;
+      border-bottom: 1px solid var(--gri-border);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .reguli-lista {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.7rem;
+    }
+
+    .reguli-lista li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .reguli-lista li::before {
+      content: "✓";
+      color: var(--albastru-mediu);
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .btn-inapoi {
+      display: inline-block;
+      color: var(--albastru-mediu);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-inapoi:hover {
+      text-decoration: underline;
+    }
+
+    .link-extern {
+      color: var(--albastru-mediu);
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--albastru-inchis);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
