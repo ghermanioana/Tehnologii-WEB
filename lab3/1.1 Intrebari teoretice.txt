@@ -1,0 +1,28 @@
+1. Care sunt cele 4 metode HTTP principale și când se folosește fiecare?
+
+	Cele patru metode HTTP principale sunt GET, POST, PUT și DELETE.
+	Metoda GET se folosește pentru a solicita sau a obține date de la un server. De exemplu, când deschidem o pagină web, browserul trimite o cerere GET către 
+server pentru a primi conținutul paginii.
+	Metoda POST se utilizează pentru a trimite date către server, de obicei pentru a crea o resursă nouă. Un exemplu este trimiterea unui formular de 
+înregistrare sau autentificare pe un site.
+	Metoda PUT este folosită pentru a actualiza sau a înlocui o resursă existentă pe server. De exemplu, poate fi utilizată pentru modificarea 
+informațiilor unui utilizator într-o aplicație.
+	Metoda DELETE este utilizată pentru a șterge o resursă de pe server, cum ar fi ștergerea unui cont, a unui articol sau a unui fișier dintr-o 
+aplicație web.
+
+2. Ce semnifică codurile de status: 200, 301, 400, 401, 403, 404, 500?
+
+Codul 200 înseamnă că cererea a fost procesată cu succes și serverul a trimis răspunsul corect către client.
+Codul 301 indică faptul că resursa cerută a fost mutată permanent la o altă adresă, iar browserul este redirecționat automat către noua locație.
+Codul 400 semnifică o cerere incorectă. Acest lucru apare atunci când browserul trimite o cerere greșită sau incompletă către server.
+Codul 401 înseamnă că utilizatorul nu este autorizat și trebuie să se autentifice pentru a avea acces la resursa respectivă.
+Codul 403 indică faptul că accesul este interzis. Chiar dacă cererea este corectă, serverul refuză accesul la resursă.
+Codul 404 înseamnă că resursa sau pagina cerută nu a fost găsită pe server. Aceasta este una dintre cele mai comune erori pe internet.
+Codul 500 reprezintă o eroare internă a serverului, ceea ce înseamnă că serverul a întâmpinat o problemă și nu a putut procesa cererea.
+
+3. Care este diferența între HTTP și HTTPS?
+
+HTTP (HyperText Transfer Protocol) este protocolul folosit pentru transferul datelor între browser și server pe internet. În cazul HTTP, informațiile sunt transmise fără criptare, ceea ce înseamnă că pot fi interceptate mai ușor de persoane neautorizate.
+HTTPS (HyperText Transfer Protocol Secure) este o versiune securizată a protocolului HTTP. Acesta utilizează criptarea prin SSL sau TLS pentru a proteja datele transmise între utilizator și server. Astfel, informațiile sensibile, cum ar fi parolele sau datele bancare, sunt mult mai bine protejate.
+Din acest motiv, majoritatea site-urilor moderne folosesc HTTPS, iar în browser apare un simbol de lacăt care indică o conexiune securizată.
+
