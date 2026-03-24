@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light">
+
+<nav>
+    <a href="index.html">🏠 Acasă</a>
+    <a href="cart.html">🛒 Coș de Cumpărături</a>
+    <a href="cookies-info.html">🍪 Cookies</a>
+    <button class="btn-danger" onclick="deconectare()" style="margin-left:auto;">🚪 Deconectare</button>
+</nav>
+
+<div class="container">
+
+    <div class="welcome-card">
+        <h1 id="welcome-msg">👋 Bun venit!</h1>
+        <p id="session-id-display"></p>
+    </div>
+
+    <div class="section">
+        <h2>📋 Informații sesiune</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Câmp</th><th>Valoare</th></tr></thead>
+                <tbody>
+                    <tr><td>ID Sesiune</td><td id="info-session-id">-</td></tr>
+                    <tr><td>Username</td><td id="info-username">-</td></tr>
+                    <tr><td>Email</td><td id="info-email">-</td></tr>
+                    <tr><td>Ora autentificării</td><td id="info-login-time">-</td></tr>
+                    <tr><td>Durata sesiunii</td><td id="info-duration">-</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🔍 Date brute sessionStorage</h2>
+        <div class="table-wrapper" style="padding:16px;">
+            <pre id="raw-session" style="font-size:12px; overflow-x:auto; margin:0;"></pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🧪 Experiment: sessionStorage per tab</h2>
+        <div class="table-wrapper" style="padding:20px;">
+            <p style="font-size:14px; margin-bottom:12px; opacity:0.8;">
+                Deschide această pagină într-un tab nou și observă că sessionStorage este <strong>diferit</strong> pentru fiecare tab — vei fi redirecționat la login!
+            </p>
+            <a href="dashboard.html" target="_blank" class="btn-save" style="display:inline-block; text-decoration:none;">
+                🔗 Deschide în tab nou
+            </a>
+        </div>
+    </div>
+
+    <div class="section">
+        <a href="cart.html" class="btn-save" style="display:inline-block; text-decoration:none; margin-right:8px;">🛒 Coș de Cumpărături</a>
+        <button class="btn-danger" onclick="deconectare()">🚪 Deconectare</button>
+    </div>
+
+</div>
+
+<script src="js/cookies.js"></script>
+<script src="js/storage.js"></script>
+<script>
+    let loginTime = null;
+
+    function initPage() {
+        const theme = CookieManager.get('theme') || 'light';
+        document.body.className = theme;
+
+        const session = StorageManager.getSession('currentUser');
+        if (!session) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        loginTime = new Date(session.loginTime);
+
+        document.getElementById('welcome-msg').textContent = '👋 Bun venit, ' + session.username + '!';
+        document.getElementById('session-id-display').textContent = 'Sesiune activă: ' + session.sessionId;
+        document.getElementById('info-session-id').textContent = session.sessionId;
+        document.getElementById('info-username').textContent = session.username;
+        document.getElementById('info-email').textContent = session.email;
+        document.getElementById('info-login-time').textContent = loginTime.toLocaleString('ro-RO');
+
+        // Date brute sessionStorage
+        const allSession = StorageManager.getAllSession();
+        document.getElementById('raw-session').textContent = JSON.stringify(allSession, null, 2);
+
+        // Actualizare durata la fiecare secunda
+        updateDuration();
+        setInterval(updateDuration, 1000);
+    }
+
+    function updateDuration() {
+        if (!loginTime) return;
+        const now = new Date();
+        const diff = Math.floor((now - loginTime) / 1000);
+        const ore = Math.floor(diff / 3600);
+        const minute = Math.floor((diff % 3600) / 60);
+        const secunde = diff % 60;
+        const display = (ore > 0 ? ore + 'h ' : '') +
+                        (minute > 0 ? minute + 'm ' : '') +
+                        secunde + 's';
+        document.getElementById('info-duration').textContent = display;
+    }
+
+    function deconectare() {
+        StorageManager.clearSession();
+        window.location.href = 'login.html';
+    }
+
+    initPage();
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca - Campus Info Hub</title>
+  <link rel="stylesheet" href="C:\Users\Ioana\Desktop\Tehnologii WEB\Campus_info_hub\css\library.css">
+</head>
+
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">🎓 Campus Info Hub</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">🏠 Home</a></li>
+      <li><a href="library.html" class="activa">📚 Biblioteca</a></li>
+      <li><a href="cafeteria.html">🍽️ Cantina</a></li>
+      <li><a href="gym.html">💪 Sala de sport</a></li>
+      <li><a href="#program">📅 Program</a></li>
+      <li><a href="https://www.edu.ro" target="_blank" class="link-extern">🌐 EDU.ro</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="icon">📚</div>
+    <h1>Biblioteca Campusului</h1>
+    <p>Sali de studiu, calculatoare, carti si resurse academice</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="btn-inapoi">← Inapoi la Home</a>
+    <div class="sectiune">
+      <h2>📖 Sali Disponibile</h2>
+      <div class="sali-grid">
+        <div class="sala-card">
+          <h3>Sala de Lectura</h3>
+          <p>📍 Etaj 1 &nbsp;|&nbsp; 🪑 60 locuri</p>
+          <p>Zona de liniste totala, ideal pentru studiu individual</p>
+          <span class="disponibil">✓ Disponibila</span>
+        </div>
+        <div class="sala-card">
+          <h3>Sala Calculatoare</h3>
+          <p>📍 Parter &nbsp;|&nbsp; 🖥️ 30 calculatoare</p>
+          <p>Acces internet, imprimanta, scanare documente</p>
+          <span class="disponibil">✓ Disponibila</span>
+        </div>
+        <div class="sala-card">
+          <h3>Sala Studiu Grup (A)</h3>
+          <p>📍 Etaj 2 &nbsp;|&nbsp; 🪑 12 locuri</p>
+          <p>Rezervare necesara, tabla alba, proiector</p>
+          <span class="ocupat">✗ Ocupata azi</span>
+        </div>
+        <div class="sala-card">
+          <h3>Sala Studiu Grup (B)</h3>
+          <p>📍 Etaj 2 &nbsp;|&nbsp; 🪑 8 locuri</p>
+          <p>Disponibila fara rezervare, spatiu mic si intim</p>
+          <span class="disponibil">✓ Disponibila</span>
+        </div>
+      </div>
+    </div>
+    <div class="sectiune" id="program">
+      <h2>📅 Program Biblioteca</h2>
+      <table>
+        <tr>
+          <th>Zi</th>
+          <th>Ora deschidere</th>
+          <th>Ora inchidere</th>
+          <th>Observatii</th>
+        </tr>
+        <tr>
+          <td>Luni - Joi</td>
+          <td>08:00</td>
+          <td>20:00</td>
+          <td>Program normal</td>
+        </tr>
+        <tr>
+          <td>Vineri</td>
+          <td>08:00</td>
+          <td>18:00</td>
+          <td>Inchidere mai devreme</td>
+        </tr>
+        <tr>
+          <td>Sambata</td>
+          <td>09:00</td>
+          <td>16:00</td>
+          <td>Fara sala calculatoare</td>
+        </tr>
+        <tr>
+          <td>Duminica</td>
+          <td colspan="3">❌ Inchis</td>
+        </tr>
+      </table>
+    </div>
+    <div class="sectiune">
+      <h2>📋 Regulament Biblioteca</h2>
+      <ul class="reguli-lista">
+        <li>Liniste in salile de studiu individual</li>
+        <li>Telefonul pe silentios in tot spatiul</li>
+        <li>Carti imprumutate maxim 14 zile</li>
+        <li>Nu se consuma mancare in sala de lectura</li>
+        <li>Rucsacurile se lasa la garderoba</li>
+        <li>Calculatoarele doar in scop academic</li>
+        <li>Cartea de student obligatorie la intrare</li>
+        <li>Salile de grup se rezerva cu 24h inainte</li>
+      </ul>
+    </div>
+    <div class="sectiune">
+      <h2>📞 Contact & Resurse</h2>
+      <p>📧 Email: <a href="mailto:biblioteca@campus.ro" class="link-extern">biblioteca@campus.ro</a></p>
+      <p>📞 Telefon: 0265 123 456</p>
+      <p>🌐 Catalog online:
+        <a href="https://www.bibnat.ro" target="_blank" class="link-extern">Biblioteca Nationala</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 Campus Info Hub &nbsp;|&nbsp;
+      <a href="../index.html" style="color: #93c5fd;">← Inapoi la Home</a>
+    </p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,322 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: #060e17;
+}
+
+/* HEADER */
+header {
+    background: #f57c00;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    height: 50px; /* Ajustează conform imaginii tale */
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.logo-text span {
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a.nav-link {
+    text-decoration: none;
+    color: #000000; /* Negru pentru Inscriere si Regulament */
+    font-weight: 800; /* Font îngroșat conform imaginii */
+    margin-left: 25px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+nav a.active {
+    color: #1a237e !important; /* Albastru închis conform design-ului */
+}
+
+/* Efect la trecerea cu mouse-ul (optional, pentru interactivitate) */
+nav a.nav-link:hover {
+    opacity: 0.7;
+}
+
+/* Stil pentru iconița de Facebook (rămâne neschimbat) */
+.fb-icon {
+    background: #3b5998;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center; /* Centrare verticală a întregului bloc de text */
+    justify-content: flex-start; /* Aliniere la stânga */
+    padding-left: 10%; /* Spațiul din stânga până la text */
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 20%, transparent 80%), 
+                url('hero.png') no-repeat center center/cover;
+}
+
+.hero-content {
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Asigură alinierea la stânga a elementelor interne */
+}
+
+.hero h1 {
+    font-size: 56px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #cccccc;
+}
+
+.btn-inscriere {
+    display: inline-block;
+    background-color: #f57c00; /* Portocaliul oficial */
+    color: white;
+    text-decoration: none;
+    padding: 15px 45px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    
+    /* ACEASTA ESTE CHEIA: */
+    margin-top: 60px; /* Creează spațiul mare de deasupra butonului, ca în poză */
+    
+    transition: background 0.3s ease;
+}
+
+.btn-inscriere:hover {
+    background-color: #e65100;
+}
+
+/* SECTION ORANGE */
+.orange {
+    background: #f57c00; /* Portocaliul intens din imagini */
+    padding: 80px 10%;
+    color: #000000;      /* Textul rămâne negru pentru contrast */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reguli-content {
+    max-width: 50%; /* Ocupă doar jumătate de pagină ca în i4 */
+    text-align: left;
+}
+
+.reguli-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.reguli-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.separator {
+    border: none;
+    border-top: 1px solid #ffffff; /* Linie albă și puțin mai groasă ca în poză */
+    margin: 60px auto;            /* 'auto' o centrează pe orizontală */
+    width: 60%;                   /* Nu ocupă tot ecranul (ajustează între 40-70%) */
+    opacity: 1;                   /* Ne asigurăm că este complet vizibilă */
+}
+
+.calendar-wrapper {
+    display: flex;
+    justify-content: center; /* Împinge tot box-ul pe centrul paginii */
+    width: 100%;
+}
+
+.calendar-box {
+    text-align: left; /* Textul din interior rămâne aliniat la stânga ca în i4 */
+    min-width: 300px; /* Previne strângerea prea tare a textului */
+}
+
+.calendar-box h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    text-align: center; /* Titlul 'CALENDAR' este adesea centrat deasupra listei */
+}
+
+.calendar-box p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer {
+    background: #060e17;
+    padding: 40px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 60px;
+}
+
+.dalle {
+    color: #436d8d;
+    font-size: 0.8rem;
+}
+.menu-icon {
+    display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    /* HEADER MOBIL */
+    header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 20px !important;
+    }
+
+    .nav-desktop {
+        display: none; /* Ascundem meniul text pe mobil conform i1.jpg */
+    }
+
+    .menu-icon {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 30px !important;   /* Lățimea liniilor */
+        height: 20px !important;  /* Înălțimea totală a grupului de linii */
+        cursor: pointer;
+        z-index: 1001;            /* Să fie deasupra fundalului */
+    }
+
+    .menu-icon span {
+        display: block !important;
+        width: 100% !important;
+        height: 3px !important;   /* Grosimea fiecărei linii */
+        background-color: #000000 !important; /* Culoarea neagră din model */
+        border-radius: 2px;
+    }
+
+    /* HERO MOBIL */
+    .hero {
+        padding-left: 0 !important;   /* Aceasta elimină zona mov din stânga */
+        padding-right: 0 !important;
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+        
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100vw !important;      /* Forțăm lățimea întregului ecran */
+        left: 0 !important;
+    }
+
+   .hero-content {
+        margin: 0 auto !important;    /* Centrează cutia în interiorul hero */
+        padding: 0 20px !important;   /* Doar aici lăsăm puțin spațiu să nu atingă marginile */
+        max-width: 100% !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .hero h1 {
+        width: 100% !important;
+        text-align: center !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        font-size: 3rem !important;  /* Ajustăm să fie vizibil pe un rând/două */
+    }
+
+    .hero p {
+        width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
+    }
+
+   .btn-inscriere {
+        display: inline-block !important;
+        margin: 30px auto 0 auto !important; /* Sus: 30px, Lateral: Auto (centrare) */
+        float: none !important;
+    }
+
+    /* SECTIUNEA ORANGE MOBIL */
+    .orange {
+        padding: 60px 20px;
+        text-align: center; /* Centrare text conform i2.png */
+    }
+
+    .reguli-content {
+        max-width: 100%; /* Ocupă toată lățimea pe mobil */
+    }
+
+    .reguli-content h2 {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .separator {
+        width: 80%;
+        margin: 40px auto;
+    }
+
+    .calendar-box {
+        text-align: center; /* Calendarul se centrează complet în i2.png */
+    }
+
+    /* FOOTER MOBIL */
+    footer {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-logo {
+        height: 80px; /* Logo-ul UAB mai vizibil pe mobil */
+    }
+}

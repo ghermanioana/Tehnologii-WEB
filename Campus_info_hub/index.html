@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Info Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">🎓 Campus Info Hub</a>
+    <ul class="nav-links">
+      <li><a href="pages/library.html">📚 Biblioteca</a></li>
+      <li><a href="pages/cafeteria.html">🍽️ Cantina</a></li>
+      <li><a href="pages/gym.html">💪 Sala de sport</a></li>
+      <li><a href="#program">📅 Program</a></li>
+      <li><a href="https://www.edu.ro" target="_blank" class="link-extern">🌐 EDU.ro</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <h1>Campus Info Hub</h1>
+    <p>Tot ce ai nevoie despre campus — intr-un singur loc.</p>
+    <a href="#program" class="btn">⬇️ Sari la Program</a>
+  </div>
+  
+  <main>>
+    <h2>Resurse Campus</h2>
+    <div class="cards-grid">
+      <a href="pages/library.html" class="card">
+        <div class="card-icon">📚</div>
+        <h3>Biblioteca</h3>
+        <p>Orare, sali de studiu, resurse</p>
+      </a>
+      <a href="pages/cafeteria.html" class="card">
+        <div class="card-icon">🍽️</div>
+        <h3>Cantina</h3>
+        <p>Meniu zilnic, orare, pret</p>
+      </a>
+      <a href="pages/gym.html" class="card">
+        <div class="card-icon">💪</div>
+        <h3>Sala de sport</h3>
+        <p>Activitati, orare, inscrieri</p>
+      </a>
+    </div>
+    <div class="section-resurse">
+      <h2>Toate Resursele</h2>
+      <div class="filtre">
+        <button class="filtru-btn activ" onclick="filtreaza('toate')">Toate</button>
+        <button class="filtru-btn" onclick="filtreaza('studiu')">📖 Studiu</button>
+        <button class="filtru-btn" onclick="filtreaza('mancare')">🍴 Mancare</button>
+        <button class="filtru-btn" onclick="filtreaza('sport')">🏃 Sport</button>
+      </div>
+      <div id="lista-resurse">
+        <p id="mesaj-incarcare">⏳ Se incarca resursele...</p>
+      </div>
+    </div>
+    <div id="program">
+      <h2>📅 Program General Campus</h2>
+      <table>
+        <tr>
+          <th>Locatie</th>
+          <th>Luni - Vineri</th>
+          <th>Sambata</th>
+          <th>Duminica</th>
+        </tr>
+        <tr>
+          <td>📚 Biblioteca</td>
+          <td>08:00 - 20:00</td>
+          <td>09:00 - 16:00</td>
+          <td>Inchis</td>
+        </tr>
+        <tr>
+          <td>🍽️ Cantina</td>
+          <td>07:30 - 19:00</td>
+          <td>08:00 - 14:00</td>
+          <td>Inchis</td>
+        </tr>
+        <tr>
+          <td>💪 Sala de sport</td>
+          <td>07:00 - 22:00</td>
+          <td>09:00 - 18:00</td>
+          <td>10:00 - 16:00</td>
+        </tr>
+      </table>
+    </div>
+  </main>
+  <footer>
+    <p>© 2024 Campus Info Hub &nbsp;|&nbsp;
+      <a href="https://www.edu.ro" style="color: #93c5fd;" target="_blank">edu.ro</a>
+    </p>
+  </footer>
+</body>
+</html>

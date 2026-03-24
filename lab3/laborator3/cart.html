@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coș de Cumpărături</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light">
+
+<nav>
+    <a href="index.html">🏠 Acasă</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="cookies-info.html">🍪 Cookies</a>
+    <button class="btn-danger" onclick="deconectare()" style="margin-left:auto;">🚪 Deconectare</button>
+</nav>
+
+<div class="container">
+
+    <div class="welcome-card">
+        <h1>🛒 Coș de Cumpărături</h1>
+        <p id="cart-user">Autentificat ca: -</p>
+    </div>
+
+    <!-- Adaugare produs -->
+    <div class="section">
+        <h2>➕ Adaugă produs</h2>
+        <div class="table-wrapper" style="padding:20px;">
+            <div class="form-group">
+                <label for="product-select">Produs</label>
+                <select id="product-select">
+                    <option value="laptop">Laptop — 2500 RON</option>
+                    <option value="telefon">Telefon — 1200 RON</option>
+                    <option value="tableta">Tabletă — 800 RON</option>
+                    <option value="casti">Căști — 150 RON</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Cantitate (1-10)</label>
+                <input type="number" id="quantity" value="1" min="1" max="10" style="max-width:120px;">
+            </div>
+            <button class="btn-save" onclick="adaugaInCos()">🛒 Adaugă în Coș</button>
+        </div>
+    </div>
+
+    <!-- Cos curent -->
+    <div class="section">
+        <h2>📦 Coșul tău</h2>
+        <div id="alert-box"></div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>Produs</th><th>Cantitate</th><th>Preț unitar</th><th>Subtotal</th><th>Acțiune</th></tr>
+                </thead>
+                <tbody id="cart-body">
+                    <tr class="empty-row"><td colspan="5">Coșul este gol.</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr id="total-row" style="display:none;">
+                        <td colspan="3" style="font-weight:600; padding:12px 14px;">TOTAL</td>
+                        <td id="total-price" style="font-weight:600; padding:12px 14px;"></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <button class="btn-danger" style="margin-top:12px;" onclick="golesteeCosul()">🗑 Golește Coșul</button>
+    </div>
+
+</div>
+
+<script src="js/cookies.js"></script>
+<script src="js/storage.js"></script>
+<script>
+    const products = {
+        laptop:  { name: 'Laptop',   price: 2500 },
+        telefon: { name: 'Telefon',  price: 1200 },
+        tableta: { name: 'Tabletă',  price: 800  },
+        casti:   { name: 'Căști',    price: 150  }
+    };
+
+    function initPage() {
+        const theme = CookieManager.get('theme') || 'light';
+        document.body.className = theme;
+
+        const session = StorageManager.getSession('currentUser');
+        if (!session) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        document.getElementById('cart-user').textContent = 'Autentificat ca: ' + session.username;
+        renderCart();
+    }
+
+    function adaugaInCos() {
+        const productKey = document.getElementById('product-select').value;
+        let qty = parseInt(document.getElementById('quantity').value);
+
+        if (isNaN(qty) || qty < 1 || qty > 10) {
+            showAlert('Cantitatea trebuie să fie între 1 și 10!', 'error');
+            return;
+        }
+
+        const cart = StorageManager.getSession('cart') || {};
+        cart[productKey] = (cart[productKey] || 0) + qty;
+        StorageManager.setSession('cart', cart);
+
+        showAlert('✅ ' + products[productKey].name + ' adăugat în coș!', 'success');
+        renderCart();
+    }
+
+    function stergedinCos(key) {
+        const cart = StorageManager.getSession('cart') || {};
+        delete cart[key];
+        StorageManager.setSession('cart', cart);
+        renderCart();
+    }
+
+    function golesteeCosul() {
+        StorageManager.setSession('cart', {});
+        renderCart();
+        showAlert('Coșul a fost golit!', 'success');
+    }
+
+    function renderCart() {
+        const cart = StorageManager.getSession('cart') || {};
+        const keys = Object.keys(cart).filter(k => cart[k] > 0);
+        const tbody = document.getElementById('cart-body');
+        const totalRow = document.getElementById('total-row');
+
+        if (keys.length === 0) {
+            tbody.innerHTML = '<tr class="empty-row"><td colspan="5">Coșul este gol.</td></tr>';
+            totalRow.style.display = 'none';
+            return;
+        }
+
+        let total = 0;
+        tbody.innerHTML = keys.map(k => {
+            const product = products[k];
+            const subtotal = product.price * cart[k];
+            total += subtotal;
+            return `<tr>
+                <td>${product.name}</td>
+                <td>${cart[k]}</td>
+                <td>${product.price.toLocaleString('ro-RO')} RON</td>
+                <td>${subtotal.toLocaleString('ro-RO')} RON</td>
+                <td><button class="btn-danger" onclick="stergedinCos('${k}')">🗑 Șterge</button></td>
+            </tr>`;
+        }).join('');
+
+        document.getElementById('total-price').textContent = total.toLocaleString('ro-RO') + ' RON';
+        totalRow.style.display = '';
+    }
+
+    function showAlert(msg, type) {
+        const box = document.getElementById('alert-box');
+        box.innerHTML = '<div class="alert-' + type + '">' + msg + '</div>';
+        setTimeout(() => { box.innerHTML = ''; }, 3000);
+    }
+
+    function deconectare() {
+        StorageManager.clearSession();
+        window.location.href = 'login.html';
+    }
+
+    initPage();
+</script>
+</body>
+</html>
